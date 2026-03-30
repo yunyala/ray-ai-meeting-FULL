@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./ray-ai-meeting-backend
+    container_name: ray-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - DASHSCOPE_API_KEY=${DASHSCOPE_API_KEY}
+      - ALIYUN_ASR_APP_KEY=${ALIYUN_ASR_APP_KEY}
+      - ALIYUN_ACCESS_KEY_ID=${ALIYUN_ACCESS_KEY_ID}
+      - ALIYUN_ACCESS_KEY_SECRET=${ALIYUN_ACCESS_KEY_SECRET}
+    restart: unless-stopped
+
+  frontend:
+    build: ./ray-ai-meeting-frontend
+    container_name: ray-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped

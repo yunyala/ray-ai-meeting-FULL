@@ -1,0 +1,40 @@
+server:
+  port: 8080
+  # Tomcat 配置
+  tomcat:
+    # 最大连接数
+    max-connections: 10000
+    threads:
+      # 最大工作线程数
+      max: 200
+      # 最小工作线程数
+      min-spare: 10
+
+spring:
+  application:
+    name: ray-ai-meeting-backend
+  ai:
+    dashscope:
+      api-key: ${DASHSCOPE_API_KEY:your-api-key-here}
+    chat:
+      options:
+        model: qwen-plus
+        temperature: 0.7
+  # Servlet 配置
+  servlet:
+    multipart:
+      # 最大文件上传大小
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+aliyun:
+  asr:
+    app-key: ${ALIYUN_ASR_APP_KEY:your-app-key}
+    access-key-id: ${ALIYUN_ACCESS_KEY_ID:your-access-key-id}
+    access-key-secret: ${ALIYUN_ACCESS_KEY_SECRET:your-access-key-secret}
+
+logging:
+  level:
+    com.ray.ai.meeting: DEBUG
+    org.springframework.web.socket: DEBUG
+    com.alibaba.cloud.ai: DEBUG

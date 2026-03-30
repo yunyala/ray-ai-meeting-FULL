@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ray-ai-meeting-backend
+  ai:
+    dashscope:
+      api-key: ${DASHSCOPE_API_KEY}
+    chat:
+      options:
+        model: qwen-plus
+        temperature: 0.7
+
+aliyun:
+  asr:
+    app-key: ${ALIYUN_ASR_APP_KEY}
+    access-key-id: ${ALIYUN_ACCESS_KEY_ID}
+    access-key-secret: ${ALIYUN_ACCESS_KEY_SECRET}
+
+logging:
+  level:
+    com.ray.ai.meeting: INFO
+    org.springframework.web.socket: INFO
+    com.alibaba.cloud.ai: INFO
